@@ -2,7 +2,7 @@ import os
 import sys
 from pathlib import Path
 from urllib.parse import urljoin, urlparse
-from itertools import takewhile, count
+from itertools import count
 
 import requests
 
