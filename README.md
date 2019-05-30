@@ -2,7 +2,9 @@
 
 ## Installation
 
+```sh
 pip3 install git+https://github.com/kaki-xxx/danbooru_downloader
+```
 
 ## Usage
 
