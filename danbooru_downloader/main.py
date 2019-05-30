@@ -7,7 +7,7 @@ Webスクレイピングによって実装しているためサイトの仕様�
 
 import sys
 
-from . import download
+from danbooru_downloader import download
 
 
 def main():
