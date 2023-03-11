@@ -10,7 +10,7 @@ def is_last(base_url, page_num):
     r = requests.get(base_url, params={'page': page_num})
     soup = BeautifulSoup(r.text, features='lxml')
 
-    articles = soup.select('#posts-container > article')
+    articles = soup.select('.posts-container > article')
     return len(articles) == 0
 
 
@@ -19,7 +19,7 @@ def fetch_post_urls(base_url, page_num):
     r = requests.get(base_url, params={'page': page_num})
     soup = BeautifulSoup(r.text, features='lxml')
 
-    articles = soup.select('#posts-container > article')
+    articles = soup.select('.posts-container > article')
     if len(articles) == 0:
         yield None
     for article in articles:

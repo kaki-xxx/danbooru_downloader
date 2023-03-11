@@ -57,7 +57,8 @@ def main(search_tags):
     base_url = 'https://danbooru.donmai.us/'
     for i in count(1):
         print(f'{i}ページ目')
-        if is_last(base_url, str(i)):
+        if is_last(r.url, str(i)):
+            print('最後のページに到達しました')
             break
         for post_url in fetch_post_urls(r.url, str(i)):
             abs_url = urljoin(base_url, post_url)
