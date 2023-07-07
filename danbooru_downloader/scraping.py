@@ -5,15 +5,6 @@ import requests
 from bs4 import BeautifulSoup
 
 
-def is_last(base_url, page_num):
-    """ 最後のページかどうか """
-    r = requests.get(base_url, params={'page': page_num})
-    soup = BeautifulSoup(r.text, features='lxml')
-
-    articles = soup.select('.posts-container > article')
-    return len(articles) == 0
-
-
 def fetch_post_urls(base_url, page_num):
     """ サムネイルの並んだページからpostのurlをすべて返すようなイテレータを作成 """
     r = requests.get(base_url, params={'page': page_num})

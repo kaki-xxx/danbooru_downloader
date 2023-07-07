@@ -7,7 +7,7 @@ from itertools import count
 import requests
 
 from danbooru_downloader.scraping import (
-    fetch_post_urls, fetch_image_url, is_last
+    fetch_post_urls, fetch_image_url
 )
 
 save_dir_root = Path.home() / 'Pictures/danbooru'
@@ -57,10 +57,11 @@ def main(search_tags):
     base_url = 'https://danbooru.donmai.us/'
     for i in count(1):
         print(f'{i}ページ目')
-        if is_last(r.url, str(i)):
+        post_urls = fetch_post_urls(r.url, str(i))
+        if post_urls is None:
             print('最後のページに到達しました')
             break
-        for post_url in fetch_post_urls(r.url, str(i)):
+        for post_url in post_urls:
             abs_url = urljoin(base_url, post_url)
             image_url = fetch_image_url(abs_url)
             save_image(image_url, save_dir)
